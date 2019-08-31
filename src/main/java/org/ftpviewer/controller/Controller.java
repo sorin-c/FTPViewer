@@ -62,9 +62,13 @@ public class Controller {
 		}
 	}
 
-	public static void writeBasicFileObjectToFile(BasicFile basicFile) {
+    /**
+     * Write root {@link BasicFile} to filesystem so that it can be loaded from
+     * disk by using {@link Controller#readObjectFromFile(String)}.
+     */
+	public static void writeBasicFileObjectToFile(BasicFile basicFile, String path) {
 		try {
-			FileOutputStream fos = new FileOutputStream("C:\\Users\\gh0st\\Desktop\\temp.txt");
+			FileOutputStream fos = new FileOutputStream("C:\\Users\\gh0st\\Desktop\\ftp_folders.txt");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(basicFile);
 			oos.close();
@@ -74,11 +78,13 @@ public class Controller {
 			e.printStackTrace();
 		}
 	}
-	
-	public static BasicFile readObjectFromFile() {
+
+    /**
+     * Create a {@link BasicFile} by loading the file at the specified path.
+     */
+	public static BasicFile readObjectFromFile(String path) {
 		try {
-//			FileInputStream fis = new FileInputStream("C:\\Users\\gh0st\\Desktop\\temp.txt");
-			FileInputStream fis = new FileInputStream("C:\\Users\\gh0st\\Desktop\\big2.txt");
+			FileInputStream fis = new FileInputStream("C:\\Users\\gh0st\\Desktop\\ftp_folders.txt");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			BasicFile basicFile = (BasicFile) ois.readObject();
 			ois.close();

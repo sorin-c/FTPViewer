@@ -2,7 +2,10 @@ package org.ftpviewer.timer;
 
 import java.util.concurrent.TimeUnit;
 
-public class MyTimer {
+/**
+ * Utility class used to measure the time it takes for code to execute.
+ */
+public class TimerUtils {
 
 	private static long startTime;
 
@@ -37,7 +40,5 @@ public class MyTimer {
 		long elapsedTime = System.nanoTime() - startTime;
 		System.out.println(message + " " + unit.convert(elapsedTime, TimeUnit.NANOSECONDS) + " " + unit.toString().toLowerCase());
 	}
-	
-
 
 }
